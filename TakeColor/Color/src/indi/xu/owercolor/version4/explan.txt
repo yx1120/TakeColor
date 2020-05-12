@@ -1,0 +1,154 @@
+Frame01 :307
+//获取选中项索引---问题所在？
+      //如何触发：在点击了JList项后，再调用clear(),抛出 java.lang.ArrayIndexOutOfBoundsException: 3 >= 0
+      //也就是说，clear()后，Jlist的容器大小为0,但由于valueChanged的不断调用，导致获取了之前的长度
+      /**
+       * 在响应代码中需要注意的是getValueIsAdjusting值的判断。
+       * 测试表明，每当我们进行选择时，valueChanged方法都会被激活多次，
+       * 其中，在最后的鼠标操作中，getValueIsAdjusting值为false，
+       * 而在一系列中间操作中，该值均为true。比如说，用鼠标连续划过一串元素时，
+       * 会有一系列getValueIsAdjusting为true的valueChanged方法激活，且最后一次为false。
+       * 而我们对选择事件的判定一般是以最后接触为准，因此这里对getValueIsAdjusting值进行一个判断。
+       */
+
+
+#
+multiple=1
+frameYIndex=229
+frameXIndex=1053
+hotKey=Alt C
+
+
+#Fang:203
+//forWindows.exe 1.5倍的差
+        /*g.drawImage(screenImage, 0, 0, (int)(FangSize*1.5), (int)(FangSize*1.5),
+                (int)((locationX + (FangSize / 4))*1.5),
+                (int)((locationY + (FangSize / 4))*1.5),
+                (int)((locationX + (FangSize / 4 * 3))*1.5),
+                (int)((locationY + (FangSize / 4 * 3))*1.5),
+                this);*/
+#Fang:153
+//forWindows.exe
+        /*screenImage = robot.createScreenCapture(new Rectangle(0, 0,
+                (int)(Toolkit.getDefaultToolkit().getScreenSize().width*1.5),
+                (int)(Toolkit.getDefaultToolkit().getScreenSize().height*1.5)
+        ));*/
+
+#MainFrame:85
+/*if(!file.exists()){
+            try {
+                file.createNewFile();
+                //直接用流写进去
+                fos = new FileOutputStream(file);
+                String info = "multiple=3\n" +
+                        "frameYIndex=300\n" +
+                        "frameXIndex=300\n" +
+                        "hotKey=Alt C";
+                fos.write(info.getBytes());
+                fos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally {
+                try{
+                    if(fos != null){
+                        fos.close();
+                    }
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+
+            frameXIndex = 300;
+            frameYIndex = 300;
+            multiple = 3;
+            hotKey = "Alt C";
+            //先创建文件，，再初始化配置类
+            //prop = new PropertiesUtils();
+        } else {
+            frameXIndex = Integer.parseInt(prop.getValue("frameXIndex"));
+            frameYIndex = Integer.parseInt(prop.getValue("frameYIndex"));
+
+            System.out.println(frameXIndex + ":" + frameYIndex);
+
+            multiple = Integer.parseInt(prop.getValue("multiple"));
+            hotKey = prop.getValue("hotKey");
+        }*/
+
+#MainFrame:78
+/*static {
+           frameXIndex = Integer.parseInt(prop.getValue("frameXIndex"));
+           frameYIndex = Integer.parseInt(prop.getValue("frameYIndex"));
+           System.out.println("打开位置:["+frameXIndex+","+frameYIndex+"]");
+           multiple = Integer.parseInt(prop.getValue("multiple"));
+           hotKey = Integer.parseInt(prop.getValue("hotKey"));
+}*/
+
+#MainFrame:272
+#MianFrame:502
+ //事件处理
+                    /*System.out.println("全局Alt+c");
+                    String hex = labelHex.getText().trim();
+                    ClipboardUtils.setClipboardString(hex);
+
+                    dlm.add(0, hex);*/
+
+#MainFrame:439
+      /*FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(new File(path));
+            bw = new BufferedWriter(fw);
+            Object[] objects = dlm.toArray();
+            for (Object object : objects) {
+                String info = (String) object;
+                bw.write(info);
+                bw.newLine();
+                bw.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fw != null) {
+                    fw.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+            } catch (IOException ex2) {
+                ex2.printStackTrace();
+            }
+        }*/
+#MainFrame:
+/*FileReader fr = null;
+        BufferedReader br = null;
+        try {
+             fr = new FileReader(new File(path));
+             br = new BufferedReader(fr);
+            String info;
+            while ((info = br.readLine()) != null) {
+                System.out.println(info);
+                dlm.add(0, info);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fr != null) {
+                    fr.close();
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e2) {
+                e2.printStackTrace();
+            }
+        }*/
